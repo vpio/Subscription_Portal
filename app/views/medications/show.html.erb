@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @medication.name %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @medication.price %>
+</p>
+
+<p>
+  <strong>Duration of supply in months:</strong>
+  <%= @medication.duration_of_supply_in_months %>
+</p>
+
+<%= link_to 'Edit', edit_medication_path(@medication) %> |
+<%= link_to 'Back', medications_path %>
