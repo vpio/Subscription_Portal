@@ -1,4 +1,10 @@
 <p id="notice"><%= notice %></p>
 
+<% @medications.each do |medication| %>
+  <div>
+    <%= medication.name %>
+  </div>
+<% end %>
+
 <%= link_to 'Edit', edit_subscription_path(@subscription) %> |
 <%= link_to 'Back', subscriptions_path %>
