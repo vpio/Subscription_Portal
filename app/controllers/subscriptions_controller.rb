@@ -25,7 +25,9 @@ class SubscriptionsController < ApplicationController
   # POST /subscriptions
   # POST /subscriptions.json
   def create
-    @subscription = Subscription.new(subscription_params)
+    @subscription = Subscription.new
+    # medications = Medication.find(medication_list)
+    # @subscription = subscription.medications.concat(medication_list)
 
     respond_to do |format|
       if @subscription.save
@@ -69,6 +71,11 @@ class SubscriptionsController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
+
+    # def medication_list
+    #   params.require(:subscription).permit(subscription_line_items: [])
+    # end
+
     def subscription_params
       params.fetch(:subscription, {})
     end
