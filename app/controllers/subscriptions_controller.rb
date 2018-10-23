@@ -25,7 +25,7 @@ class SubscriptionsController < ApplicationController
   # POST /subscriptions
   # POST /subscriptions.json
   def create
-    @subscription = Subscription.new
+    @subscription = Subscription.new(subscription_params)
     # medications = Medication.find(medication_list)
     # @subscription = subscription.medications.concat(medication_list)
 
