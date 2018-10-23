@@ -16,10 +16,10 @@
   </head>
 
   <body>
-    <nav class="navbar sticky-top navbar-light bg-light">
-      <a class="navbar-brand" href="#">Sticky top</a>
+    <nav class="navbar sticky-top navbar-light bg-primary shadow-depth">
+      <a class="navbar-brand text-white" href="#">Sticky top</a>
     </nav>
-    <div class="gradient">
+    <div class="gradient padding-top">
       <%#= notice %>
       <%= yield %>
       <% if user_signed_in? %>
