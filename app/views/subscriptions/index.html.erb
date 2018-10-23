@@ -1,26 +1,28 @@
-<p id="notice"><%= notice %></p>
+<div class="pl-5">
 
-<h1>Subscriptions</h1>
+  <h1 class="text-white title-outline">My Subscriptions</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @subscriptions.each do |subscription| %>
+  <table>
+    <thead>
       <tr>
-        <td>This is Your Subscription!</td>
-        <td><%= link_to 'Show', subscription %></td>
-        <td><%= link_to 'Edit', edit_subscription_path(subscription) %></td>
-        <td><%= link_to 'Destroy', subscription, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody class="list-group center bg-primary shadow-depth">
+      <% @subscriptions.each do |subscription| %>
+        <tr class="list-group-item bg-info text-white">
+          <td>This is Your Subscription!</td>
+          <!-- <td><%#= link_to 'Show', subscription, class: "btn btn-primary" %></td> -->
+          <td><%= link_to 'Edit', edit_subscription_path(subscription), class: "btn btn-primary mr-2 ml-5" %></td>
+          <td><%= link_to 'Destroy', subscription, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to 'New Subscription', new_subscription_path %>
+  <br>
+
+  <%= link_to 'New Subscription', new_subscription_path %>
+
+</div>
