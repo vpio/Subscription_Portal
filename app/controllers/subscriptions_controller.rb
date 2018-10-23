@@ -20,18 +20,19 @@ class SubscriptionsController < ApplicationController
 
   # GET /subscriptions/1/edit
   def edit
+    @medications = Medication.all
+    # @subscription = subscription.medications.concat(medication_list)
   end
 
   # POST /subscriptions
   # POST /subscriptions.json
   def create
-    @subscription = Subscription.new(subscription_params)
-    # medications = Medication.find(medication_list)
-    # @subscription = subscription.medications.concat(medication_list)
+    @subscription = current_user.subscriptions.new(subscription_params)
+
 
     respond_to do |format|
       if @subscription.save
-        format.html { redirect_to @subscription, notice: 'Subscription was successfully created.' }
+        format.html { redirect_to edit_subscription_path(@subscription), notice: 'Subscription was successfully created.' }
         format.json { render :show, status: :created, location: @subscription }
       else
         format.html { render :new }
@@ -43,6 +44,8 @@ class SubscriptionsController < ApplicationController
   # PATCH/PUT /subscriptions/1
   # PATCH/PUT /subscriptions/1.json
   def update
+    puts "=============="
+    p medication_list
     respond_to do |format|
       if @subscription.update(subscription_params)
         format.html { redirect_to @subscription, notice: 'Subscription was successfully updated.' }
@@ -72,9 +75,9 @@ class SubscriptionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
 
-    # def medication_list
-    #   params.require(:subscription).permit(subscription_line_items: [])
-    # end
+    def medication_list
+      params.require(:subscription).permit(subscription_line_items: [:medications])
+    end
 
     def subscription_params
       params.fetch(:subscription, {})

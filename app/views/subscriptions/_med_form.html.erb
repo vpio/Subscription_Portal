@@ -11,9 +11,9 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.collection_check_boxes(:subscription_line_items, Medication.all, :id, :name) %>
-  </div>
+  <%= form.fields_for(:medications) do |m| %>
+    <%= m.collection_check_boxes :id, Medication.all, :id, :name, {prompt: true} %>
+  <% end %>
 
   <div class="actions">
     <%= form.submit %>

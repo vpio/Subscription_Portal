@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :subscriptions
+  resources :subscriptions do
+    resources :subscription_line_items, only: [:create, :destroy]
+  end
   resources :medications
 
   root to: "subscriptions#index"

@@ -1,6 +1,18 @@
 <h1>Editing Subscription</h1>
 
-<%= render 'form', subscription: @subscription %>
+<% @medications.each do |m| %>
+    <% if @subscription.medications.include?(m) %>
+      <%= button_to "Unsubscribe from #{m.name}",
+                    subscription_subscription_line_item_path(@subscription, @subscription.line_item_for(m)),
+                    method: :delete %>
+    <% else %>
+      <%= button_to "Subscribe to #{m.name}",
+                    subscription_subscription_line_items_path(@subscription),
+                    params: { subscription_line_item: { medication_id: m.id } } %>
+    <% end %>
+<% end %>
+
+<!-- <%#= render 'med_form', subscription: @subscription %> -->
 
 <%= link_to 'Show', @subscription %> |
 <%= link_to 'Back', subscriptions_path %>
