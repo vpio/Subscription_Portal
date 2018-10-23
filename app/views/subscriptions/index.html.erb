@@ -1,6 +1,4 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Subscriptions</h1>
+<h1>My Subscriptions</h1>
 
 <table>
   <thead>
@@ -9,13 +7,13 @@
     </tr>
   </thead>
 
-  <tbody>
+  <tbody class="list-group center bg-primary">
     <% @subscriptions.each do |subscription| %>
-      <tr>
+      <tr class="list-group-item bg-info text-white">
         <td>This is Your Subscription!</td>
-        <td><%= link_to 'Show', subscription %></td>
-        <td><%= link_to 'Edit', edit_subscription_path(subscription) %></td>
-        <td><%= link_to 'Destroy', subscription, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <!-- <td><%#= link_to 'Show', subscription, class: "btn btn-primary" %></td> -->
+        <td><%= link_to 'Edit', edit_subscription_path(subscription), class: "btn btn-primary" %></td>
+        <td><%= link_to 'Destroy', subscription, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary" %></td>
       </tr>
     <% end %>
   </tbody>
