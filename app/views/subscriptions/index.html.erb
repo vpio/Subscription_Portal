@@ -1,23 +1,29 @@
 <div class="mdl-grid">
   <div class="mdl-cell mdl-cell--12-col">
     <h1 class="text-white title-outline">My Subscriptions</h1>
-    <table>
-      <thead>
-        <tr>
-          <th colspan="3"></th>
-        </tr>
-      </thead>
 
-      <tbody class="demo-list-item mdl-list shadow-depth">
         <% @subscriptions.each do |subscription| %>
-          <tr class="mdl-list__item">
-            <td><%=current_user.email%>'s Subscription: </td>
-            <td><%= link_to 'Edit', edit_subscription_path(subscription), class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %></td>
-            <td><%= link_to 'Destroy', subscription, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary" %></td>
-          </tr>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col" colspan="1">hi</th>
+            </tr>
+          </thead>
+          <tbody class="demo-list-item mdl-list shadow-depth">
+            <tr class="mdl-list__item">
+              <td><%=current_user.email%>'s Subscription: </td>
+              <td><%= link_to 'Edit', edit_subscription_path(subscription), class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %></td>
+              <td><%= link_to 'Destroy', subscription, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary" %></td>
+            </tr>
+            <tr class="mdl-list__item">
+              <% subscription.medications.each do |medication| %>
+              <td><%= medication.name %></td>
+              <% end %>
+            </tr>
+          </tbody>
+        </table>
         <% end %>
-      </tbody>
-    </table>
+
 
     <br>
 
