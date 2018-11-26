@@ -1,19 +1,6 @@
 <div class="mdl-grid">
   <div class="mdl-cell mdl-cell--12-col">
-    <style>
-      .demo-layout-transparent {
-        background: url('../assets/demos/transparent.jpg') center / cover;
-      }
-      .demo-layout-transparent .mdl-layout__header,
-      .demo-layout-transparent .mdl-layout__drawer-button {
-        /* This background is dark, so we set text to white. Use 87% black instead if
-        your background is light. */
-        color: white;
-      }
-    </style>
-
     <h1 class="text-white title-outline">My Subscriptions</h1>
-
     <table>
       <thead>
         <tr>
@@ -24,8 +11,7 @@
       <tbody class="demo-list-item mdl-list shadow-depth">
         <% @subscriptions.each do |subscription| %>
           <tr class="mdl-list__item">
-            <td>This is Your Subscription!</td>
-            <!-- <td><%#= link_to 'Show', subscription, class: "btn btn-primary" %></td> -->
+            <td><%=current_user.email%>'s Subscription: </td>
             <td><%= link_to 'Edit', edit_subscription_path(subscription), class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %></td>
             <td><%= link_to 'Destroy', subscription, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary" %></td>
           </tr>
@@ -34,6 +20,7 @@
     </table>
 
     <br>
-    <%= link_to 'New Subscription', new_subscription_path, class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %>
+
+    <%= render 'form', subscription: @subscription %>
   </div>
 </div>
