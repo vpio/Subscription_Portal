@@ -1,26 +1,38 @@
-<div class="mdl-grid">
-  <div class="mdl-cell mdl-cell--12-col">
-    <h1 class="text-white title-outline">My Subscriptions</h1>
-    <table>
-      <thead>
+<div class="container mt-5">
+  <% @subscriptions.each do |subscription| %>
+  <table class="table table-striped">
+    <div class="med-table-header">
+      <div class="med-table-title">
+        <h1>Your Subscription:</h1>
+      </div>
+      <div class="med-table-buttons">
+        <%= link_to 'Destroy', subscription, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%= link_to 'Edit', edit_subscription_path(subscription) %>
+      </div>
+    </div>
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Medication</th>
+        <th scope="col">Quantity</th>
+      </tr>
+    </thead>
+    <tbody class="shadow-depth">
+        <% subscription.medications.each_with_index do |medication, i| %>
         <tr>
-          <th colspan="3"></th>
+          <th scope="row"><%= i+1 %></th>
+          <td><%= medication.name %></td>
+          <td></td>
         </tr>
-      </thead>
-
-      <tbody class="demo-list-item mdl-list shadow-depth">
-        <% @subscriptions.each do |subscription| %>
-          <tr class="mdl-list__item">
-            <td><%=current_user.email%>'s Subscription: </td>
-            <td><%= link_to 'Edit', edit_subscription_path(subscription), class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %></td>
-            <td><%= link_to 'Destroy', subscription, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary" %></td>
-          </tr>
         <% end %>
-      </tbody>
-    </table>
+      <tr>
+        <td>Total:</td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <% end %>
 
-    <br>
-
-    <%= render 'form', subscription: @subscription %>
-  </div>
-</div>
+  <%= render 'form', subscription: @subscription %>
+<div>
