@@ -1,16 +1,30 @@
-<h1>Editing Subscription</h1>
+<div class="container mt-5">
+  <h1>Editing Subscription</h1>
 
-<% @medications.each do |m| %>
-    <% if @subscription.medications.include?(m) %>
-      <%= button_to "Unsubscribe from #{m.name}",
-                    subscription_subscription_line_item_path(@subscription, @subscription.line_item_for(m)),
-                    method: :delete %>
-    <% else %>
-      <%= button_to "Subscribe to #{m.name}",
-                    subscription_subscription_line_items_path(@subscription),
-                    params: { subscription_line_item: { medication_id: m.id } } %>
-    <% end %>
-<% end %>
+  <table class="table">
+    <tbody class="shadow-depth">
+      <% @medications.each do |m| %>
+        <% if @subscription.medications.include?(m) %>
+        <tr>
+          <td>
+            <%= button_to "Unsubscribe from #{m.name}",
+            subscription_subscription_line_item_path(@subscription, @subscription.line_item_for(m)),
+            method: :delete, class: "btn btn-light" %>
+          </td>
+        </tr>
+        <% else %>
+        <tr>
+          <td>
+            <%= button_to "Subscribe to #{m.name}",
+            subscription_subscription_line_items_path(@subscription), class: "btn btn-success",
+            params: { subscription_line_item: { medication_id: m.id } } %>
+          </td>
+        </tr>
+        <% end %>
+      <% end %>
+    <tbody>
+  </table>
 
-<%= link_to 'Check Out' %> |
-<%= link_to 'Back', subscriptions_path %>
+  <%= link_to 'Check Out' %> |
+  <%= link_to 'Back', subscriptions_path %>
+<div>
