@@ -3,7 +3,7 @@
   <table class="table table-striped">
     <div class="med-table-header">
       <div class="med-table-title">
-        <h1>Your Subscription:</h1>
+        <h1><%= current_user.email %>'s Subscription:</h1>
       </div>
       <div class="med-table-buttons">
         <%= link_to 'Destroy', subscription, method: :delete, data: { confirm: 'Are you sure?' } %>
@@ -33,6 +33,7 @@
     </tbody>
   </table>
   <% end %>
-
-  <%= render 'form', subscription: @subscription %>
+  <% if @subscriptions.length < 1 %>
+    <%= render 'form', subscription: @subscription %>
+  <% end %>
 <div>

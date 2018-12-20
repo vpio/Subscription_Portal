@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resources :subscription_line_items, only: [:create, :destroy]
   end
   resources :medications
+  resources :payments
 
   root to: "subscriptions#index"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
