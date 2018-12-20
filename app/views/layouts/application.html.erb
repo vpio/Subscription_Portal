@@ -15,7 +15,7 @@
 
   <body>
     <nav class="navbar navbar-dark bg-dark">
-      <a class="navbar-brand text-white">My Subscription Box</a>
+      <a href="/" class="navbar-brand text-white">My Subscription Box</a>
       <% if user_signed_in? %>
       <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "mdl-navigation__link"%>
       <% end %>
