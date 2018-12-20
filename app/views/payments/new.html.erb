@@ -1,0 +1,16 @@
+<div class="center-card">
+  <div class="card w-75 mt-5 shadow-depth">
+    <div class="card-body">
+      <h5 class="card-title">Get It Delivered</h5>
+      <table>
+        <%= form_with url: `https://api.stripe.com/v1/charges` do |form| %>
+          <%= form.text_field :title %>
+          <%= form.text_field :title %>
+          <%= form.submit %>
+        <% end %>
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <a href="#" class="btn btn-primary">Button</a>
+      </table>
+    </div>
+  </div>
+</div>
